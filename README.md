@@ -1,12 +1,14 @@
 # QA BootCamp API Project
 
-##Description
+## Description
+
 The purpose of this project is to apply all of the techniques and knowledge learned during our API testing sessions to a real backend testing framework.
 
-##Pre-requisites
+## Pre-requisites
+
 Web or Desktop version of Postman 9.0.8 or later.
 
-##Test Scenarios
+## Test Scenarios
 
 Projects Folder:
 
