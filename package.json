@@ -1,0 +1,22 @@
+{
+  "name": "qabootcampapiproject",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "index.js",
+  "scripts": {
+    "api-testing": "newman run './api_testing/QA BootCamp Todoist Collection.postman_collection.json' -e './api_testing/QABootCamp Todoist Env.postman_environment.json'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeSMLow/QABootCampAPIProject.git"
+  },
+  "author": "msanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikeSMLow/QABootCampAPIProject/issues"
+  },
+  "homepage": "https://github.com/MikeSMLow/QABootCampAPIProject#readme",
+  "devDependencies": {
+    "newman": "^5.3.0"
+  }
+}

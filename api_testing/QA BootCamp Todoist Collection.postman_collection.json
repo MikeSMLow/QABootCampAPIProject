@@ -1950,8 +1950,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 403 for Forbidden\", function () {",
-											"    pm.response.to.have.status(403);",
+											"pm.test(\"Status code is 401 for Unauthorized\", function () {",
+											"    pm.response.to.have.status(401);",
 											"});",
 											"",
 											"pm.test(\"Body contains Forbidden message\", function () {",
@@ -2007,7 +2007,7 @@
 											"    pm.response.to.have.status('No Content');",
 											"});",
 											"",
-											"pm.environment.unset('taskId');"
+											"pm.environment.unset('taskId')"
 										],
 										"type": "text/javascript"
 									}
@@ -2043,7 +2043,7 @@
 					"name": "Delete Task - Invalid body sent",
 					"item": [
 						{
-							"name": "Create New Task Copy",
+							"name": "Create New Task",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -2108,7 +2108,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Task Copy",
+							"name": "Delete Task Failure",
 							"event": [
 								{
 									"listen": "test",
@@ -2116,15 +2116,13 @@
 										"exec": [
 											"//This API is set to ignore whatever content is sent as Body, so the expected results should be as if no body was sent at all.",
 											"",
-											"pm.test(\"Status code is 204\", function () {",
-											"    pm.response.to.have.status(204);",
+											"pm.test(\"Status code is 400 for Bad Request\", function () {",
+											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"pm.test(\"Status message is No Content\", function () {",
-											"    pm.response.to.have.status('No Content');",
-											"});",
-											"",
-											"pm.environment.unset('taskId');"
+											"pm.test(\"Status message is Bad Request\", function () {",
+											"    pm.response.to.have.status('Bad Request');",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -2148,6 +2146,51 @@
 										}
 									}
 								},
+								"url": {
+									"raw": "{{prodURL}}/rest/v1/tasks/{{taskId}}",
+									"host": [
+										"{{prodURL}}"
+									],
+									"path": [
+										"rest",
+										"v1",
+										"tasks",
+										"{{taskId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"pm.test(\"Status message is No Content\", function () {",
+											"    pm.response.to.have.status('No Content');",
+											"});",
+											"",
+											"pm.environment.unset('taskId');"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{bearerToken}}",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{prodURL}}/rest/v1/tasks/{{taskId}}",
 									"host": [
