@@ -7,6 +7,7 @@ The purpose of this project is to apply all of the techniques and knowledge lear
 ## Pre-requisites
 
 Web or Desktop version of Postman 9.0.8 or later.
+Newman 5.3.0 or later.
 
 ## Test Scenarios
 
